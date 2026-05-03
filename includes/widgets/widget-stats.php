@@ -36,6 +36,7 @@ class ADYMob_E2_Widget_Stats extends \Elementor\Widget_Base {
 
 		// ── Style: Cells ─────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_cells', [ 'label' => __( 'سلول‌های آمار', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [ 'label' => __( 'فاصله بین سلول‌ها', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-stats-grid' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'cell_bg',     [ 'label' => __( 'پس‌زمینه سلول', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell' => 'background-color: {{VALUE}};' ] ] );
 		$this->add_control( 'cell_radius', [ 'label' => __( 'گردی گوشه', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'num_typo',    'label' => __( 'تایپوگرافی عدد', 'adymob' ),   'selector' => '{{WRAPPER}} .adymob-stat-cell .n' ] );

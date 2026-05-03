@@ -59,6 +59,7 @@ class ADYMob_E2_Widget_Faq extends \Elementor\Widget_Base {
 
 		// ── Style: FAQ Items ─────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_faq', [ 'label' => __( 'سوال و جواب', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [ 'label' => __( 'فاصله بین سوالات', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-faq-list' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'item_border_color',  [ 'label' => __( 'رنگ خط جداکننده', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-item' => 'border-color: {{VALUE}};' ] ] );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'q_typo', 'label' => __( 'تایپوگرافی سوال', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-faq-q span' ] );
 		$this->add_control( 'q_color',            [ 'label' => __( 'رنگ سوال', 'adymob' ),         'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-q span' => 'color: {{VALUE}};' ] ] );

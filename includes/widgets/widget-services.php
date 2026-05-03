@@ -59,6 +59,7 @@ class ADYMob_E2_Widget_Services extends \Elementor\Widget_Base {
 
 		// ── Style: Cards ─────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_cards', [ 'label' => __( 'کارت‌ها', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [ 'label' => __( 'فاصله بین کارت‌ها', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-services-grid' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'card_bg',      [ 'label' => __( 'رنگ پس‌زمینه کارت', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-svc-card' => 'background-color: {{VALUE}};' ] ] );
 		$this->add_control( 'card_radius',  [ 'label' => __( 'گردی گوشه', 'adymob' ),          'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-svc-card' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'card_title_typo', 'label' => __( 'تایپوگرافی عنوان کارت', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-svc-card h3' ] );

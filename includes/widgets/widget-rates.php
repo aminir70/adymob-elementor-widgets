@@ -54,6 +54,7 @@ class ADYMob_E2_Widget_Rates extends \Elementor\Widget_Base {
 
 		// ── Style: Board ─────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_board', [ 'label' => __( 'تابلو نرخ', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [ 'label' => __( 'فاصله بین ستون‌های نرخ', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-rates-table' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'board_bg',       [ 'label' => __( 'پس‌زمینه تابلو', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-rates-board' => 'background-color: {{VALUE}};' ] ] );
 		$this->add_control( 'board_radius',   [ 'label' => __( 'گردی گوشه', 'adymob' ),         'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-rates-board' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'pair_color',     [ 'label' => __( 'رنگ جفت ارز', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-rate-col .pair' => 'color: {{VALUE}};' ] ] );

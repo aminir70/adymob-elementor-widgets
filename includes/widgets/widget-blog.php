@@ -93,7 +93,7 @@ class ADYMob_E2_Widget_Blog extends \Elementor\Widget_Base {
 			$query = new WP_Query( $args );
 			foreach ( $query->posts as $i => $p ) {
 				$cats      = get_the_category( $p->ID );
-				$thumb_url = get_the_post_thumbnail_url( $p->ID, 'medium' );
+				$thumb_url = get_the_post_thumbnail_url( $p->ID, 'large' );
 				$posts[] = [
 					'cat'       => $cats ? esc_html( $cats[0]->name ) : '',
 					'date'      => get_the_date( 'j F Y', $p->ID ),

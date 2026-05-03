@@ -51,6 +51,7 @@ class ADYMob_E2_Widget_How_It_Works extends \Elementor\Widget_Base {
 
 		// ── Style: Steps ─────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_steps', [ 'label' => __( 'مراحل', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [ 'label' => __( 'فاصله بین مراحل', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-how-steps' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'circle_bg',    [ 'label' => __( 'رنگ دایره شماره', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-step-card .circle' => 'background-color: {{VALUE}};' ] ] );
 		$this->add_control( 'circle_color', [ 'label' => __( 'رنگ متن دایره', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-step-card .circle' => 'color: {{VALUE}};' ] ] );
 		$this->add_control( 'step_card_bg', [ 'label' => __( 'پس‌زمینه کارت مرحله', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-step-card' => 'background-color: {{VALUE}};' ] ] );

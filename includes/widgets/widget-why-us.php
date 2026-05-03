@@ -51,6 +51,7 @@ class ADYMob_E2_Widget_Why_Us extends \Elementor\Widget_Base {
 
 		// ── Style: Items ─────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_items', [ 'label' => __( 'آیتم‌ها', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [ 'label' => __( 'فاصله بین آیتم‌ها', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 80 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-why-grid' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'item_bg',         [ 'label' => __( 'پس‌زمینه آیتم', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-why-item' => 'background-color: {{VALUE}};' ] ] );
 		$this->add_control( 'item_radius',     [ 'label' => __( 'گردی گوشه', 'adymob' ),        'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-why-item' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'item_num_color',  [ 'label' => __( 'رنگ شماره', 'adymob' ),       'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-why-item .n' => 'color: {{VALUE}};' ] ] );
