@@ -16,8 +16,8 @@ class ADYMob_E2_Widget_Blog extends \Elementor\Widget_Base {
 		$this->end_controls_section();
 
 		$this->start_controls_section( 'source_sec', [ 'label' => __( 'منبع', 'adymob' ) ] );
-		$this->add_control( 'source', [ 'label' => __( 'منبع محتوا', 'adymob' ), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'manual',
-			'options' => [ 'manual' => 'دستی', 'wp_posts' => 'نوشته‌های وردپرس' ] ] );
+		$this->add_control( 'source', [ 'label' => __( 'منبع محتوا', 'adymob' ), 'type' => \Elementor\Controls_Manager::SELECT, 'default' => 'wp_posts',
+			'options' => [ 'wp_posts' => 'نوشته‌های وردپرس', 'manual' => 'دستی' ] ] );
 		$this->add_control( 'posts_count', [ 'label' => __( 'تعداد نوشته', 'adymob' ), 'type' => \Elementor\Controls_Manager::NUMBER, 'default' => 3,
 			'condition' => [ 'source' => 'wp_posts' ] ] );
 		$this->add_control( 'category', [ 'label' => __( 'دسته‌بندی (slug)', 'adymob' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '',
@@ -64,6 +64,13 @@ class ADYMob_E2_Widget_Blog extends \Elementor\Widget_Base {
 
 		// ── Style: Cards ─────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_cards', [ 'label' => __( 'کارت‌های مقاله', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'grid_gap', [
+			'label'      => __( 'فاصله بین کارت‌ها', 'adymob' ),
+			'type'       => \Elementor\Controls_Manager::SLIDER,
+			'size_units' => [ 'px', 'em' ],
+			'range'      => [ 'px' => [ 'min' => 0, 'max' => 80 ] ],
+			'selectors'  => [ '{{WRAPPER}} .adymob-blog-grid' => 'gap: {{SIZE}}{{UNIT}};' ],
+		] );
 		$this->add_control( 'card_bg',          [ 'label' => __( 'پس‌زمینه کارت', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-post-card' => 'background-color: {{VALUE}};' ] ] );
 		$this->add_control( 'card_radius',      [ 'label' => __( 'گردی گوشه', 'adymob' ),         'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-post-card' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'cat_badge_bg',     [ 'label' => __( 'پس‌زمینه دسته', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-post-body .meta .cat' => 'background-color: {{VALUE}};' ] ] );
@@ -79,24 +86,30 @@ class ADYMob_E2_Widget_Blog extends \Elementor\Widget_Base {
 		$source = $s['source'] ?? 'manual';
 		$posts  = [];
 
+		$colors = [ 't1', 't2', 't3' ];
 		if ( $source === 'wp_posts' ) {
 			$args = [ 'post_type' => 'post', 'posts_per_page' => (int) ( $s['posts_count'] ?? 3 ), 'post_status' => 'publish' ];
 			if ( ! empty( $s['category'] ) ) $args['category_name'] = sanitize_text_field( $s['category'] );
 			$query = new WP_Query( $args );
-			foreach ( $query->posts as $p ) {
-				$cats = get_the_category( $p->ID );
+			foreach ( $query->posts as $i => $p ) {
+				$cats      = get_the_category( $p->ID );
+				$thumb_url = get_the_post_thumbnail_url( $p->ID, 'medium' );
 				$posts[] = [
-					'cat'   => $cats ? esc_html( $cats[0]->name ) : '',
-					'date'  => get_the_date( 'j F Y', $p->ID ),
-					'title' => get_the_title( $p->ID ),
-					'desc'  => wp_trim_words( get_the_excerpt( $p->ID ), 18 ),
-					'glyph' => mb_substr( get_the_title( $p->ID ), 0, 1 ),
-					'color' => 't1',
-					'url'   => [ 'url' => get_permalink( $p->ID ) ],
+					'cat'       => $cats ? esc_html( $cats[0]->name ) : '',
+					'date'      => get_the_date( 'j F Y', $p->ID ),
+					'title'     => get_the_title( $p->ID ),
+					'desc'      => wp_trim_words( get_the_excerpt( $p->ID ), 18 ),
+					'glyph'     => mb_substr( get_the_title( $p->ID ), 0, 1 ),
+					'color'     => $colors[ $i % 3 ],
+					'thumb_url' => $thumb_url ?: '',
+					'url'       => [ 'url' => get_permalink( $p->ID ) ],
 				];
 			}
 		} else {
-			$posts = $s['posts'] ?? [];
+			foreach ( $s['posts'] ?? [] as $p ) {
+				$p['thumb_url'] = '';
+				$posts[] = $p;
+			}
 		}
 		?>
 		<section class="adymob-widget" id="blog" style="padding:100px 0">
@@ -113,9 +126,13 @@ class ADYMob_E2_Widget_Blog extends \Elementor\Widget_Base {
 				?>
 				<article class="adymob-post-card">
 					<a href="<?php echo $link; ?>" style="text-decoration:none;color:inherit">
+						<?php if ( ! empty( $post['thumb_url'] ) ) : ?>
+						<div class="adymob-post-thumb has-thumb" style="background-image:url(<?php echo esc_url( $post['thumb_url'] ); ?>);background-size:cover;background-position:center"></div>
+						<?php else : ?>
 						<div class="adymob-post-thumb <?php echo esc_attr( $post['color'] ); ?>">
 							<div class="glyph"><?php echo esc_html( $post['glyph'] ); ?></div>
 						</div>
+						<?php endif; ?>
 						<div class="adymob-post-body">
 							<div class="meta"><span class="cat"><?php echo esc_html( $post['cat'] ); ?></span><span>·</span><span><?php echo esc_html( $post['date'] ); ?></span></div>
 							<h3><?php echo esc_html( $post['title'] ); ?></h3>
