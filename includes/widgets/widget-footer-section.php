@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Footer_Section extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-footer'; }
+	public function get_name()       { return 'adymob-e2-footer'; }
 	public function get_title()      { return __( 'ADY فوتر', 'adymob' ); }
 	public function get_icon()       { return 'eicon-footer'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 
 	protected function register_controls() {
 		$this->start_controls_section( 'brand_sec', [ 'label' => __( 'برند', 'adymob' ) ] );

@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Testimonials extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Testimonials extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-testimonials'; }
+	public function get_name()       { return 'adymob-e2-testimonials'; }
 	public function get_title()      { return __( 'ADY نظرات مشتریان', 'adymob' ); }
 	public function get_icon()       { return 'eicon-testimonial'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 
 	protected function register_controls() {
 		$this->start_controls_section( 'head', [ 'label' => __( 'سرتیتر', 'adymob' ) ] );

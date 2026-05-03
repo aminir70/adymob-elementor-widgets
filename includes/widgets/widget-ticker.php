@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Ticker extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Ticker extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-ticker'; }
+	public function get_name()       { return 'adymob-e2-ticker'; }
 	public function get_title()      { return __( 'ADY تیکر نرخ ارز', 'adymob' ); }
 	public function get_icon()       { return 'eicon-exchange'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 	public function get_keywords()   { return [ 'ticker', 'rate', 'currency', 'adymob' ]; }
 
 	protected function register_controls() {

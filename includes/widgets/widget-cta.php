@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Cta extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Cta extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-cta'; }
+	public function get_name()       { return 'adymob-e2-cta'; }
 	public function get_title()      { return __( 'ADY فراخوان عمل (CTA)', 'adymob' ); }
 	public function get_icon()       { return 'eicon-call-to-action'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 
 	protected function register_controls() {
 		$this->start_controls_section( 'content', [ 'label' => __( 'محتوا', 'adymob' ) ] );

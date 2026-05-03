@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Hero extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Hero extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-hero'; }
+	public function get_name()       { return 'adymob-e2-hero'; }
 	public function get_title()      { return __( 'ADY هیرو + ماشین حساب', 'adymob' ); }
 	public function get_icon()       { return 'eicon-header'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 	public function get_keywords()   { return [ 'hero', 'calculator', 'adymob' ]; }
 
 	protected function register_controls() {

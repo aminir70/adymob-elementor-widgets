@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Faq extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Faq extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-faq'; }
+	public function get_name()       { return 'adymob-e2-faq'; }
 	public function get_title()      { return __( 'ADY سوالات متداول', 'adymob' ); }
 	public function get_icon()       { return 'eicon-accordion'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 
 	protected function register_controls() {
 		$this->start_controls_section( 'head', [ 'label' => __( 'سرتیتر', 'adymob' ) ] );

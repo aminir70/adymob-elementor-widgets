@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: ADY MOB Elementor Widgets
+ * Plugin Name: ADY MOB E2
  * Description: ویجت‌های سفارشی المنتور برای سایت ADY MOB — تیکر نرخ ارز، هیرو با ماشین حساب، خدمات، آمار، نرخ زنده، نظرات، FAQ، CTA و فوتر.
  * Version: 1.0.1
  * Author: ADY MOB
@@ -9,11 +9,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-defined( 'ADYMOB_VERSION' ) || define( 'ADYMOB_VERSION', '1.0.1' );
-defined( 'ADYMOB_PATH' )   || define( 'ADYMOB_PATH', plugin_dir_path( __FILE__ ) );
-defined( 'ADYMOB_URL' )    || define( 'ADYMOB_URL',  plugin_dir_url( __FILE__ ) );
+defined( 'ADYMOB_E2_VERSION' ) || define( 'ADYMOB_E2_VERSION', '1.0.1' );
+defined( 'ADYMOB_E2_PATH' )   || define( 'ADYMOB_E2_PATH', plugin_dir_path( __FILE__ ) );
+defined( 'ADYMOB_E2_URL' )    || define( 'ADYMOB_E2_URL',  plugin_dir_url( __FILE__ ) );
 
-final class ADYMob_Elementor_Widgets {
+final class ADYMob_E2_Plugin {
 
 	private static $_instance = null;
 
@@ -47,9 +47,9 @@ final class ADYMob_Elementor_Widgets {
 	}
 
 	public function register_category( $manager ) {
-		$manager->add_category( 'adymob', [
+		$manager->add_category( 'adymob-e2', [
 			'title' => __( 'ADY MOB', 'adymob' ),
-			'icon'  => 'eicon-globe',
+			'icon'  => 'eicon-globe', 'active' => true,
 		] );
 	}
 
@@ -64,10 +64,10 @@ final class ADYMob_Elementor_Widgets {
 	/** Elementor 3.5+ — $manager passed, use register() */
 	public function register_widgets( $manager ) {
 		foreach ( $this->widget_list() as $w ) {
-			$file = ADYMOB_PATH . 'includes/widgets/widget-' . strtolower( str_replace( '_', '-', $w ) ) . '.php';
+			$file = ADYMOB_E2_PATH . 'includes/widgets/widget-' . strtolower( str_replace( '_', '-', $w ) ) . '.php';
 			if ( ! file_exists( $file ) ) continue;
 			require_once $file;
-			$class = 'ADYMob_Widget_' . $w;
+			$class = 'ADYMob_E2_Widget_' . $w;
 			if ( class_exists( $class ) ) {
 				$manager->register( new $class() );
 			}
@@ -78,10 +78,10 @@ final class ADYMob_Elementor_Widgets {
 	public function register_widgets_legacy() {
 		$wm = \Elementor\Plugin::$instance->widgets_manager;
 		foreach ( $this->widget_list() as $w ) {
-			$file = ADYMOB_PATH . 'includes/widgets/widget-' . strtolower( str_replace( '_', '-', $w ) ) . '.php';
+			$file = ADYMOB_E2_PATH . 'includes/widgets/widget-' . strtolower( str_replace( '_', '-', $w ) ) . '.php';
 			if ( ! file_exists( $file ) ) continue;
 			require_once $file;
-			$class = 'ADYMob_Widget_' . $w;
+			$class = 'ADYMob_E2_Widget_' . $w;
 			if ( class_exists( $class ) ) {
 				$wm->register_widget_type( new $class() );
 			}
@@ -96,21 +96,21 @@ final class ADYMob_Elementor_Widgets {
 		);
 		wp_enqueue_style(
 			'adymob-styles',
-			ADYMOB_URL . 'assets/css/adymob.css',
-			[ 'vazirmatn' ], ADYMOB_VERSION
+			ADYMOB_E2_URL . 'assets/css/adymob.css',
+			[ 'vazirmatn' ], ADYMOB_E2_VERSION
 		);
 		wp_enqueue_script(
 			'adymob-frontend',
-			ADYMOB_URL . 'assets/js/adymob-frontend.js',
-			[], ADYMOB_VERSION, true
+			ADYMOB_E2_URL . 'assets/js/adymob-frontend.js',
+			[], ADYMOB_E2_VERSION, true
 		);
 	}
 
 	public function enqueue_editor() {
 		wp_enqueue_style(
 			'adymob-editor',
-			ADYMOB_URL . 'assets/css/adymob.css',
-			[], ADYMOB_VERSION
+			ADYMOB_E2_URL . 'assets/css/adymob.css',
+			[], ADYMOB_E2_VERSION
 		);
 	}
 
@@ -121,4 +121,4 @@ final class ADYMob_Elementor_Widgets {
 	}
 }
 
-ADYMob_Elementor_Widgets::instance();
+ADYMob_E2_Plugin::instance();

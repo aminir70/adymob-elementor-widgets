@@ -1,12 +1,12 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class ADYMob_Widget_Rates extends \Elementor\Widget_Base {
+class ADYMob_E2_Widget_Rates extends \Elementor\Widget_Base {
 
-	public function get_name()       { return 'adymob-rates'; }
+	public function get_name()       { return 'adymob-e2-rates'; }
 	public function get_title()      { return __( 'ADY نرخ ارز زنده', 'adymob' ); }
 	public function get_icon()       { return 'eicon-exchange'; }
-	public function get_categories() { return [ 'adymob' ]; }
+	public function get_categories() { return [ 'adymob-e2' ]; }
 
 	protected function register_controls() {
 		$this->start_controls_section( 'head', [ 'label' => __( 'سرتیتر', 'adymob' ) ] );
