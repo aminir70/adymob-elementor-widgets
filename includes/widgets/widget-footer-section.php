@@ -51,6 +51,20 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 			$this->add_control( 'col' . $c . '_links', [ 'label' => __( 'لینک‌ها', 'adymob' ), 'type' => \Elementor\Controls_Manager::REPEATER, 'fields' => $rep2->get_controls(), 'default' => $defaults[ $c ], 'title_field' => '{{{ text }}}' ] );
 			$this->end_controls_section();
 		}
+
+		// ── Style: Footer ────────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_footer', [ 'label' => __( 'رنگ‌بندی', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'footer_bg',         [ 'label' => __( 'پس‌زمینه فوتر', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} footer' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_responsive_control( 'footer_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} .adymob-footer-inner' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->add_control( 'brand_text_color',  [ 'label' => __( 'رنگ متن برند', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-brand p' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'col_title_color',   [ 'label' => __( 'رنگ عنوان ستون', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-col h5' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'col_title_typo', 'label' => __( 'تایپوگرافی عنوان ستون', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-footer-col h5' ] );
+		$this->add_control( 'link_color',        [ 'label' => __( 'رنگ لینک‌ها', 'adymob' ),      'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-col a' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'link_hover_color',  [ 'label' => __( 'رنگ لینک هاور', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-col a:hover' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'copyright_color',   [ 'label' => __( 'رنگ کپی‌رایت', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-bottom span' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'social_bg',         [ 'label' => __( 'پس‌زمینه دکمه‌های سوشال', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-bottom .social a' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'social_color',      [ 'label' => __( 'رنگ متن سوشال', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-footer-bottom .social a' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

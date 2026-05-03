@@ -17,6 +17,36 @@ class ADYMob_E2_Widget_Cta extends \Elementor\Widget_Base {
 		$this->add_control( 'btn2_text',      [ 'label' => __( 'متن دکمه دوم', 'adymob' ),  'type' => \Elementor\Controls_Manager::TEXT,     'default' => 'تماس با مشاور' ] );
 		$this->add_control( 'btn2_url',       [ 'label' => __( 'لینک دکمه دوم', 'adymob' ), 'type' => \Elementor\Controls_Manager::URL,      'default' => [ 'url' => '#' ] ] );
 		$this->end_controls_section();
+
+		// ── Style: Section ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_section', [ 'label' => __( 'بخش', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_group_control( \Elementor\Group_Control_Background::get_type(), [
+			'name'     => 'section_bg',
+			'label'    => __( 'پس‌زمینه', 'adymob' ),
+			'types'    => [ 'classic', 'gradient' ],
+			'selector' => '{{WRAPPER}} .adymob-cta-wrap',
+		] );
+		$this->add_responsive_control( 'section_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} section' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->add_control( 'wrap_radius', [ 'label' => __( 'گردی گوشه کارت', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-cta-wrap' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Text ──────────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_text', [ 'label' => __( 'متن', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'title_typo', 'label' => __( 'تایپوگرافی تیتر', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-cta-wrap h2' ] );
+		$this->add_control( 'title_color', [ 'label' => __( 'رنگ تیتر', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-cta-wrap h2' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'text_typo',  'label' => __( 'تایپوگرافی متن', 'adymob' ),  'selector' => '{{WRAPPER}} .adymob-cta-wrap p' ] );
+		$this->add_control( 'text_color',  [ 'label' => __( 'رنگ متن', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-cta-wrap p'  => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Buttons ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_btns', [ 'label' => __( 'دکمه‌ها', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'btn1_bg',     [ 'label' => __( 'پس‌زمینه دکمه اول', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'background: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn1_color',  [ 'label' => __( 'رنگ متن دکمه اول', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'color: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn1_radius', [ 'label' => __( 'گردی دکمه اول', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_control( 'btn2_color',  [ 'label' => __( 'رنگ متن دکمه دوم', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-ghost' => 'color: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn2_border', [ 'label' => __( 'رنگ حاشیه دکمه دوم', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-ghost' => 'border-color: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn2_radius', [ 'label' => __( 'گردی دکمه دوم', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-btn-ghost' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

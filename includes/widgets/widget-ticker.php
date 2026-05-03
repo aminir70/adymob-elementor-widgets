@@ -39,6 +39,18 @@ class ADYMob_E2_Widget_Ticker extends \Elementor\Widget_Base {
 		$this->add_control( 'speed', [ 'label' => __( 'سرعت (ثانیه)', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'default' => [ 'size' => 40 ], 'range' => [ 'px' => [ 'min' => 10, 'max' => 120 ] ] ] );
 
 		$this->end_controls_section();
+
+		$this->start_controls_section( 'style_ticker', [
+			'label' => __( 'رنگ‌بندی تیکر', 'adymob' ),
+			'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+		] );
+		$this->add_control( 'ticker_bg',   [ 'label' => __( 'پس‌زمینه', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-ticker' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'ticker_key',  [ 'label' => __( 'رنگ برچسب', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-ticker .item .k' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'ticker_val',  [ 'label' => __( 'رنگ مقدار', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-ticker .item b' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'ticker_up',   [ 'label' => __( 'رنگ صعودی', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-ticker .item .up' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'ticker_down', [ 'label' => __( 'رنگ نزولی', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-ticker .item .down' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'ticker_typo', 'label' => __( 'تایپوگرافی', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-ticker .item' ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

@@ -36,6 +36,34 @@ class ADYMob_E2_Widget_Testimonials extends \Elementor\Widget_Base {
 			'title_field' => '{{{ name }}}',
 		] );
 		$this->end_controls_section();
+
+		// ── Style: Section ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_section', [ 'label' => __( 'بخش', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'section_bg', [ 'label' => __( 'رنگ پس‌زمینه', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_responsive_control( 'section_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Heading ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_heading', [ 'label' => __( 'سرتیتر', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'eyebrow_color', [ 'label' => __( 'رنگ برچسب', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-eyebrow' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'title_typo', 'selector' => '{{WRAPPER}} .adymob-sec-title' ] );
+		$this->add_control( 'title_color',   [ 'label' => __( 'رنگ تیتر', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-sec-title' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'desc_typo',  'selector' => '{{WRAPPER}} .adymob-sec-desc' ] );
+		$this->add_control( 'desc_color',    [ 'label' => __( 'رنگ توضیح', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-sec-desc' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Cards ─────────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_cards', [ 'label' => __( 'کارت‌های نظر', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'card_bg',       [ 'label' => __( 'پس‌زمینه کارت', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-tm-card' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'card_radius',   [ 'label' => __( 'گردی گوشه', 'adymob' ),         'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-tm-card' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_control( 'star_color',    [ 'label' => __( 'رنگ ستاره‌ها', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .tm-stars' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'quote_typo', 'label' => __( 'تایپوگرافی نظر', 'adymob' ), 'selector' => '{{WRAPPER}} .tm-quote' ] );
+		$this->add_control( 'quote_color',   [ 'label' => __( 'رنگ نظر', 'adymob' ),          'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .tm-quote' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'avatar_bg',     [ 'label' => __( 'پس‌زمینه آواتار', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-tm-card .av' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'avatar_color',  [ 'label' => __( 'رنگ متن آواتار', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-tm-card .av' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'name_color',    [ 'label' => __( 'رنگ نام', 'adymob' ),           'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .tm-person .name' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'role_color',    [ 'label' => __( 'رنگ نقش', 'adymob' ),           'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .tm-person .role' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

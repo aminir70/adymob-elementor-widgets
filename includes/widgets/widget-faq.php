@@ -41,6 +41,41 @@ class ADYMob_E2_Widget_Faq extends \Elementor\Widget_Base {
 			'title_field' => '{{{ q }}}',
 		] );
 		$this->end_controls_section();
+
+		// ── Style: Section ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_section', [ 'label' => __( 'بخش', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'section_bg', [ 'label' => __( 'رنگ پس‌زمینه', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_responsive_control( 'section_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Heading ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_heading', [ 'label' => __( 'سرتیتر', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'eyebrow_color', [ 'label' => __( 'رنگ برچسب', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-eyebrow' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'title_typo', 'selector' => '{{WRAPPER}} .adymob-sec-title' ] );
+		$this->add_control( 'title_color',   [ 'label' => __( 'رنگ تیتر', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-sec-title' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'desc_typo',  'selector' => '{{WRAPPER}} .adymob-sec-desc' ] );
+		$this->add_control( 'desc_color',    [ 'label' => __( 'رنگ توضیح', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-sec-desc' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: FAQ Items ─────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_faq', [ 'label' => __( 'سوال و جواب', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'item_border_color',  [ 'label' => __( 'رنگ خط جداکننده', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-item' => 'border-color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'q_typo', 'label' => __( 'تایپوگرافی سوال', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-faq-q span' ] );
+		$this->add_control( 'q_color',            [ 'label' => __( 'رنگ سوال', 'adymob' ),         'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-q span' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'icon_color',         [ 'label' => __( 'رنگ آیکون +/−', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-q .icon' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'a_typo', 'label' => __( 'تایپوگرافی جواب', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-faq-a p' ] );
+		$this->add_control( 'a_color',            [ 'label' => __( 'رنگ جواب', 'adymob' ),         'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-a p' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Support Card ───────────────────────────────────────────────────
+		$this->start_controls_section( 'style_support', [ 'label' => __( 'کارت پشتیبانی', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'support_bg',     [ 'label' => __( 'پس‌زمینه کارت', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-support' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'support_radius', [ 'label' => __( 'گردی گوشه', 'adymob' ),        'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-faq-support' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_control( 'support_title_color', [ 'label' => __( 'رنگ تیتر پشتیبانی', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-support h3' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'support_text_color',  [ 'label' => __( 'رنگ متن پشتیبانی', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-support p'  => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'support_btn_bg',      [ 'label' => __( 'پس‌زمینه دکمه', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-support .adymob-btn-primary' => 'background: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'support_btn_color',   [ 'label' => __( 'رنگ متن دکمه', 'adymob' ),      'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-faq-support .adymob-btn-primary' => 'color: {{VALUE}} !important;' ] ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

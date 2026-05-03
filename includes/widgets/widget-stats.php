@@ -27,6 +27,23 @@ class ADYMob_E2_Widget_Stats extends \Elementor\Widget_Base {
 			'title_field' => '{{{ num }}}{{{ suffix }}}',
 		] );
 		$this->end_controls_section();
+
+		// ── Style: Section ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_section', [ 'label' => __( 'بخش', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'section_bg', [ 'label' => __( 'رنگ پس‌زمینه', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_responsive_control( 'section_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Cells ─────────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_cells', [ 'label' => __( 'سلول‌های آمار', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'cell_bg',     [ 'label' => __( 'پس‌زمینه سلول', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'cell_radius', [ 'label' => __( 'گردی گوشه', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'num_typo',    'label' => __( 'تایپوگرافی عدد', 'adymob' ),   'selector' => '{{WRAPPER}} .adymob-stat-cell .n' ] );
+		$this->add_control( 'num_color',   [ 'label' => __( 'رنگ عدد', 'adymob' ),         'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell .n' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'suffix_color',[ 'label' => __( 'رنگ پسوند', 'adymob' ),       'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell .suffix' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'label_typo',  'label' => __( 'تایپوگرافی برچسب', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-stat-cell .l' ] );
+		$this->add_control( 'label_color', [ 'label' => __( 'رنگ برچسب', 'adymob' ),       'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-stat-cell .l' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

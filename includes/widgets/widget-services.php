@@ -41,6 +41,31 @@ class ADYMob_E2_Widget_Services extends \Elementor\Widget_Base {
 			'title_field' => '{{{ title }}}',
 		] );
 		$this->end_controls_section();
+
+		// ── Style: Section ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_section', [ 'label' => __( 'بخش', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'section_bg', [ 'label' => __( 'رنگ پس‌زمینه', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_responsive_control( 'section_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} .adymob-widget' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Heading ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_heading', [ 'label' => __( 'سرتیتر', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'eyebrow_color', [ 'label' => __( 'رنگ برچسب', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-eyebrow' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'title_typo', 'label' => __( 'تایپوگرافی تیتر', 'adymob' ),   'selector' => '{{WRAPPER}} .adymob-sec-title' ] );
+		$this->add_control( 'title_color',   [ 'label' => __( 'رنگ تیتر', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-sec-title' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'desc_typo',  'label' => __( 'تایپوگرافی توضیح', 'adymob' ),  'selector' => '{{WRAPPER}} .adymob-sec-desc' ] );
+		$this->add_control( 'desc_color',    [ 'label' => __( 'رنگ توضیح', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-sec-desc' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Cards ─────────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_cards', [ 'label' => __( 'کارت‌ها', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'card_bg',      [ 'label' => __( 'رنگ پس‌زمینه کارت', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-svc-card' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_control( 'card_radius',  [ 'label' => __( 'گردی گوشه', 'adymob' ),          'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-svc-card' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'card_title_typo', 'label' => __( 'تایپوگرافی عنوان کارت', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-svc-card h3' ] );
+		$this->add_control( 'card_title_color', [ 'label' => __( 'رنگ عنوان کارت', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-svc-card h3' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'card_desc_color',  [ 'label' => __( 'رنگ توضیح کارت', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-svc-card p' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'card_link_color',  [ 'label' => __( 'رنگ لینک کارت', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-svc-card .cta-link' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {

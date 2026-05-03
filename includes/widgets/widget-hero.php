@@ -54,6 +54,40 @@ class ADYMob_E2_Widget_Hero extends \Elementor\Widget_Base {
 		$this->add_control( 'chip2_label',   [ 'label' => __( 'چیپ ۲ - برچسب', 'adymob' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'رتبه اعتماد' ] );
 		$this->add_control( 'chip2_value',   [ 'label' => __( 'چیپ ۲ - مقدار', 'adymob' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => '۴٫۹ / ۵' ] );
 		$this->end_controls_section();
+
+		// ── Style: Section ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_section', [ 'label' => __( 'بخش', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'section_bg', [ 'label' => __( 'رنگ پس‌زمینه', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-hero' => 'background-color: {{VALUE}};' ] ] );
+		$this->add_responsive_control( 'section_padding', [ 'label' => __( 'فاصله داخلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', 'em', '%' ], 'selectors' => [ '{{WRAPPER}} .adymob-hero' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Heading ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_heading', [ 'label' => __( 'متن اصلی', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'eyebrow_color', [ 'label' => __( 'رنگ برچسب', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-eyebrow' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'h1_typo',  'label' => __( 'تایپوگرافی تیتر', 'adymob' ),    'selector' => '{{WRAPPER}} .adymob-hero-title' ] );
+		$this->add_control( 'h1_color',  [ 'label' => __( 'رنگ تیتر', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-hero-title' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'sub_typo', 'label' => __( 'تایپوگرافی زیرتیتر', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-hero-sub' ] );
+		$this->add_control( 'sub_color', [ 'label' => __( 'رنگ زیرتیتر', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-hero-sub' => 'color: {{VALUE}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Buttons ───────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_btns', [ 'label' => __( 'دکمه‌ها', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'btn1_bg',     [ 'label' => __( 'پس‌زمینه دکمه اول', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'background: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn1_color',  [ 'label' => __( 'رنگ متن دکمه اول', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'color: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn1_radius', [ 'label' => __( 'گردی دکمه اول', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'range' => [ 'px' => [ 'max' => 50 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_control( 'btn2_color',  [ 'label' => __( 'رنگ متن دکمه دوم', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-ghost' => 'color: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn2_border', [ 'label' => __( 'رنگ حاشیه دکمه دوم', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-ghost' => 'border-color: {{VALUE}} !important;' ] ] );
+		$this->add_control( 'btn2_radius', [ 'label' => __( 'گردی دکمه دوم', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'range' => [ 'px' => [ 'max' => 50 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-btn-ghost' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Calculator ────────────────────────────────────────────────────
+		$this->start_controls_section( 'style_calc', [ 'label' => __( 'ماشین حساب', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'calc_bg',           [ 'label' => __( 'پس‌زمینه کارت', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-calc-card' => 'background: {{VALUE}};' ] ] );
+		$this->add_control( 'calc_border_color', [ 'label' => __( 'رنگ حاشیه کارت', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-calc-card' => 'border-color: {{VALUE}};' ] ] );
+		$this->add_control( 'calc_radius',       [ 'label' => __( 'گردی گوشه کارت', 'adymob' ),  'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-calc-card' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_control( 'calc_result_color', [ 'label' => __( 'رنگ عدد نتیجه', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-calc-result .v' => 'color: {{VALUE}};' ] ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'calc_result_typo', 'label' => __( 'تایپوگرافی نتیجه', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-calc-result .v' ] );
+		$this->end_controls_section();
 	}
 
 	protected function render() {
