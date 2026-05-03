@@ -9,9 +9,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'ADYMOB_VERSION', '1.0.1' );
-define( 'ADYMOB_PATH', plugin_dir_path( __FILE__ ) );
-define( 'ADYMOB_URL',  plugin_dir_url( __FILE__ ) );
+defined( 'ADYMOB_VERSION' ) || define( 'ADYMOB_VERSION', '1.0.1' );
+defined( 'ADYMOB_PATH' )   || define( 'ADYMOB_PATH', plugin_dir_path( __FILE__ ) );
+defined( 'ADYMOB_URL' )    || define( 'ADYMOB_URL',  plugin_dir_url( __FILE__ ) );
 
 final class ADYMob_Elementor_Widgets {
 
