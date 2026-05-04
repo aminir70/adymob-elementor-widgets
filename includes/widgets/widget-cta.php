@@ -40,6 +40,8 @@ class ADYMob_E2_Widget_Cta extends \Elementor\Widget_Base {
 
 		// ── Style: Buttons ───────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_btns', [ 'label' => __( 'دکمه‌ها', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_responsive_control( 'btns_margin_top', [ 'label' => __( 'فاصله از متن بالا', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 120 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-cta-btns' => 'margin-top: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_responsive_control( 'btns_gap', [ 'label' => __( 'فاصله بین دکمه‌ها', 'adymob' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px', 'em' ], 'range' => [ 'px' => [ 'min' => 0, 'max' => 60 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-cta-btns' => 'gap: {{SIZE}}{{UNIT}};' ] ] );
 		$this->add_control( 'btn1_bg',     [ 'label' => __( 'پس‌زمینه دکمه اول', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'background: {{VALUE}} !important;' ] ] );
 		$this->add_control( 'btn1_color',  [ 'label' => __( 'رنگ متن دکمه اول', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'color: {{VALUE}} !important;' ] ] );
 		$this->add_control( 'btn1_radius', [ 'label' => __( 'گردی دکمه اول', 'adymob' ),       'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'selectors' => [ '{{WRAPPER}} .adymob-btn-primary' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
