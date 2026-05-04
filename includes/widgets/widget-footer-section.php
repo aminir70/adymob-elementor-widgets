@@ -52,6 +52,16 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 			$this->end_controls_section();
 		}
 
+		// ── Certifications ──────────────────────────────────────────────────────
+		$this->start_controls_section( 'certs_sec', [ 'label' => __( 'گواهینامه‌ها', 'adymob' ) ] );
+		$this->add_control( 'cert1_img', [ 'label' => __( 'لوگو گواهینامه ۱', 'adymob' ), 'type' => \Elementor\Controls_Manager::MEDIA ] );
+		$this->add_control( 'cert1_url', [ 'label' => __( 'لینک گواهینامه ۱', 'adymob' ), 'type' => \Elementor\Controls_Manager::URL, 'default' => [ 'url' => '#' ] ] );
+		$this->add_control( 'cert1_alt', [ 'label' => __( 'متن جایگزین ۱', 'adymob' ),   'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'گواهینامه ۱' ] );
+		$this->add_control( 'cert2_img', [ 'label' => __( 'لوگو گواهینامه ۲', 'adymob' ), 'type' => \Elementor\Controls_Manager::MEDIA ] );
+		$this->add_control( 'cert2_url', [ 'label' => __( 'لینک گواهینامه ۲', 'adymob' ), 'type' => \Elementor\Controls_Manager::URL, 'default' => [ 'url' => '#' ] ] );
+		$this->add_control( 'cert2_alt', [ 'label' => __( 'متن جایگزین ۲', 'adymob' ),   'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'گواهینامه ۲' ] );
+		$this->end_controls_section();
+
 		// ── Style: Footer ────────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_footer', [ 'label' => __( 'رنگ‌بندی', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
 		$this->add_control( 'footer_bg',         [ 'label' => __( 'پس‌زمینه فوتر', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} footer' => 'background-color: {{VALUE}};' ] ] );
@@ -90,6 +100,11 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 				$social_html .= '<a href="' . $href . '" aria-label="' . esc_attr( $soc['label'] ) . '">' . esc_html( $soc['label'] ) . '</a>';
 			}
 		}
+
+		$cert1_src = ! empty( $s['cert1_img']['url'] ) ? esc_url( $s['cert1_img']['url'] ) : '';
+		$cert1_href = isset( $s['cert1_url']['url'] ) ? esc_url( $s['cert1_url']['url'] ) : '#';
+		$cert2_src = ! empty( $s['cert2_img']['url'] ) ? esc_url( $s['cert2_img']['url'] ) : '';
+		$cert2_href = isset( $s['cert2_url']['url'] ) ? esc_url( $s['cert2_url']['url'] ) : '#';
 		?>
 		<footer class="adymob-widget">
 			<div class="adymob-footer-inner">
@@ -104,6 +119,20 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 				</div>
 				<div class="adymob-footer-bottom">
 					<span><?php echo esc_html( $s['copyright'] ); ?></span>
+					<?php if ( $cert1_src || $cert2_src ) : ?>
+					<div class="adymob-footer-certs">
+						<?php if ( $cert1_src ) : ?>
+						<a href="<?php echo $cert1_href; ?>" target="_blank" rel="noopener" class="adymob-footer-cert">
+							<img src="<?php echo $cert1_src; ?>" alt="<?php echo esc_attr( $s['cert1_alt'] ); ?>">
+						</a>
+						<?php endif; ?>
+						<?php if ( $cert2_src ) : ?>
+						<a href="<?php echo $cert2_href; ?>" target="_blank" rel="noopener" class="adymob-footer-cert">
+							<img src="<?php echo $cert2_src; ?>" alt="<?php echo esc_attr( $s['cert2_alt'] ); ?>">
+						</a>
+						<?php endif; ?>
+					</div>
+					<?php endif; ?>
 					<?php if ( $social_html ) : ?>
 					<div class="social"><?php echo $social_html; // phpcs:ignore ?></div>
 					<?php endif; ?>

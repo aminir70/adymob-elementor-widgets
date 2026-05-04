@@ -55,7 +55,7 @@ final class ADYMob_E2_Plugin {
 
 	private function widget_list() {
 		return [
-			'Ticker', 'Hero', 'Services', 'Why_Us',
+			'Header', 'Ticker', 'Hero', 'Services', 'Why_Us',
 			'How_It_Works', 'Stats', 'Rates',
 			'Testimonials', 'Blog', 'Faq', 'Cta', 'Footer_Section',
 		];
