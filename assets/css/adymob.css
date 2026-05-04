@@ -57,7 +57,6 @@
 }
 .adymob-sec-title {
   font-family: var(--adymob-ff);
-  font-weight: 900;
   font-size: clamp(36px, 5vw, 64px);
   letter-spacing: -0.03em;
   line-height: 1.05;
@@ -468,7 +467,9 @@
 .adymob-faq-support p  { color: var(--adymob-ink-2); font-size: 15px; margin-bottom: 24px; }
 .adymob-faq-list { border-top: 1px solid var(--adymob-ink); }
 .adymob-faq-item { border-bottom: 1px solid var(--adymob-rule); }
-.adymob-faq-q { width: 100%; text-align: right; padding: 24px 0; background: none; border: 0; font-family: var(--adymob-ff); font-weight: 800; font-size: 18px; color: var(--adymob-ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.adymob-faq-q { width: 100%; text-align: right; padding: 24px 0; background: none; border: 0; outline: none; box-shadow: none; font-family: var(--adymob-ff); font-weight: 800; font-size: 18px; color: var(--adymob-ink); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.adymob-faq-q:hover { background: none; color: var(--adymob-ink); }
+.adymob-faq-q:focus { outline: none; box-shadow: none; }
 .adymob-faq-q .icon { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid var(--adymob-ink); display: grid; place-items: center; flex-shrink: 0; transition: all .3s var(--adymob-ease); font-size: 18px; font-weight: 900; }
 .adymob-faq-item.open .adymob-faq-q .icon { background: var(--adymob-primary); border-color: var(--adymob-primary); color: #fff; transform: rotate(45deg); }
 .adymob-faq-a { max-height: 0; overflow: hidden; transition: max-height .4s var(--adymob-ease); color: var(--adymob-ink-2); font-size: 15px; line-height: 1.75; }

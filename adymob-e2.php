@@ -2,14 +2,14 @@
 /**
  * Plugin Name: ADY MOB E2
  * Description: ویجت‌های سفارشی المنتور برای سایت ADY MOB — تیکر نرخ ارز، هیرو با ماشین حساب، خدمات، آمار، نرخ زنده، نظرات، FAQ، CTA و فوتر.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: ADY MOB
  * Text Domain: adymob
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-defined( 'ADYMOB_E2_VERSION' ) || define( 'ADYMOB_E2_VERSION', '1.0.1' );
+defined( 'ADYMOB_E2_VERSION' ) || define( 'ADYMOB_E2_VERSION', '1.0.2' );
 defined( 'ADYMOB_E2_PATH' )   || define( 'ADYMOB_E2_PATH', plugin_dir_path( __FILE__ ) );
 defined( 'ADYMOB_E2_URL' )    || define( 'ADYMOB_E2_URL',  plugin_dir_url( __FILE__ ) );
 

@@ -63,6 +63,7 @@ class ADYMob_E2_Widget_Hero extends \Elementor\Widget_Base {
 
 		// ── Style: Heading ───────────────────────────────────────────────────────
 		$this->start_controls_section( 'style_heading', [ 'label' => __( 'متن اصلی', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'eyebrow_typo', 'label' => __( 'تایپوگرافی برچسب', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-eyebrow' ] );
 		$this->add_control( 'eyebrow_color', [ 'label' => __( 'رنگ برچسب', 'adymob' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-eyebrow' => 'color: {{VALUE}};' ] ] );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'h1_typo',  'label' => __( 'تایپوگرافی تیتر', 'adymob' ),    'selector' => '{{WRAPPER}} .adymob-hero-title' ] );
 		$this->add_control( 'h1_color',  [ 'label' => __( 'رنگ تیتر', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-hero-title' => 'color: {{VALUE}};' ] ] );
