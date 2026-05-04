@@ -38,10 +38,13 @@ class ADYMob_E2_Widget_Header extends \Elementor\Widget_Base {
 		$this->end_controls_section();
 
 		// ── CTA Button ───────────────────────────────────────────────────────────
-		$this->start_controls_section( 'cta_sec', [ 'label' => __( 'دکمه', 'adymob' ) ] );
-		$this->add_control( 'btn_text', [ 'label' => __( 'متن دکمه', 'adymob' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'شروع کن' ] );
-		$this->add_control( 'btn_url',  [ 'label' => __( 'لینک دکمه', 'adymob' ), 'type' => \Elementor\Controls_Manager::URL, 'default' => [ 'url' => '#cta' ] ] );
-		$this->add_control( 'btn_show', [ 'label' => __( 'نمایش دکمه', 'adymob' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes' ] );
+		$this->start_controls_section( 'cta_sec', [ 'label' => __( 'دکمه‌ها', 'adymob' ) ] );
+		$this->add_control( 'btn_ghost_text', [ 'label' => __( 'متن دکمه شفاف', 'adymob' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'ورود' ] );
+		$this->add_control( 'btn_ghost_url',  [ 'label' => __( 'لینک دکمه شفاف', 'adymob' ), 'type' => \Elementor\Controls_Manager::URL, 'default' => [ 'url' => '#' ] ] );
+		$this->add_control( 'btn_ghost_show', [ 'label' => __( 'نمایش دکمه شفاف', 'adymob' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes' ] );
+		$this->add_control( 'btn_text', [ 'label' => __( 'متن دکمه اصلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => 'ثبت سفارش' ] );
+		$this->add_control( 'btn_url',  [ 'label' => __( 'لینک دکمه اصلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::URL, 'default' => [ 'url' => '#cta' ] ] );
+		$this->add_control( 'btn_show', [ 'label' => __( 'نمایش دکمه اصلی', 'adymob' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'yes' ] );
 		$this->end_controls_section();
 
 		// ── Style: Header ────────────────────────────────────────────────────────
@@ -64,21 +67,31 @@ class ADYMob_E2_Widget_Header extends \Elementor\Widget_Base {
 		$this->add_control( 'nav_hover_color', [ 'label' => __( 'رنگ لینک هاور', 'adymob' ),   'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-header-nav a:hover' => 'color: {{VALUE}};' ] ] );
 		$this->end_controls_section();
 
-		// ── Style: Button ────────────────────────────────────────────────────────
-		$this->start_controls_section( 'style_btn', [ 'label' => __( 'دکمه', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		// ── Style: Ghost Button ──────────────────────────────────────────────────
+		$this->start_controls_section( 'style_btn_ghost', [ 'label' => __( 'دکمه شفاف', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
+		$this->add_control( 'btn_ghost_color',  [ 'label' => __( 'رنگ متن', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-header-btn-ghost' => 'color: {{VALUE}};' ] ] );
+		$this->add_control( 'btn_ghost_border', [ 'label' => __( 'رنگ حاشیه', 'adymob' ),  'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-header-btn-ghost' => 'border-color: {{VALUE}};' ] ] );
+		$this->add_control( 'btn_ghost_radius', [ 'label' => __( 'گردی گوشه', 'adymob' ),   'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'range' => [ 'px' => [ 'max' => 50 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-header-btn-ghost' => 'border-radius: {{SIZE}}{{UNIT}} !important;' ] ] );
+		$this->end_controls_section();
+
+		// ── Style: Primary Button ────────────────────────────────────────────────
+		$this->start_controls_section( 'style_btn', [ 'label' => __( 'دکمه اصلی', 'adymob' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE ] );
 		$this->add_control( 'btn_bg',     [ 'label' => __( 'پس‌زمینه', 'adymob' ),    'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-header-btn' => 'background: {{VALUE}} !important;' ] ] );
 		$this->add_control( 'btn_color',  [ 'label' => __( 'رنگ متن', 'adymob' ),     'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ '{{WRAPPER}} .adymob-header-btn' => 'color: {{VALUE}} !important;' ] ] );
-		$this->add_control( 'btn_radius', [ 'label' => __( 'گردی گوشه', 'adymob' ),    'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'range' => [ 'px' => [ 'max' => 50 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-header-btn' => 'border-radius: {{SIZE}}{{UNIT}};' ] ] );
+		$this->add_control( 'btn_radius', [ 'label' => __( 'گردی گوشه', 'adymob' ),    'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => [ 'px' ], 'range' => [ 'px' => [ 'max' => 50 ] ], 'selectors' => [ '{{WRAPPER}} .adymob-header-btn' => 'border-radius: {{SIZE}}{{UNIT}} !important;' ] ] );
 		$this->add_group_control( \Elementor\Group_Control_Typography::get_type(), [ 'name' => 'btn_typo', 'label' => __( 'تایپوگرافی', 'adymob' ), 'selector' => '{{WRAPPER}} .adymob-header-btn' ] );
 		$this->end_controls_section();
 	}
 
 	protected function render() {
-		$s       = $this->get_settings_for_display();
-		$logo    = ! empty( $s['logo']['url'] ) ? esc_url( $s['logo']['url'] ) : '';
-		$logo_lnk = isset( $s['logo_url']['url'] ) ? esc_url( $s['logo_url']['url'] ) : '/';
-		$btn_url = isset( $s['btn_url']['url'] ) ? esc_url( $s['btn_url']['url'] ) : '#';
-		$show_btn = ! empty( $s['btn_show'] ) && $s['btn_show'] === 'yes';
+		$s            = $this->get_settings_for_display();
+		$logo         = ! empty( $s['logo']['url'] ) ? esc_url( $s['logo']['url'] ) : '';
+		$logo_lnk     = isset( $s['logo_url']['url'] ) ? esc_url( $s['logo_url']['url'] ) : '/';
+		$btn_url      = isset( $s['btn_url']['url'] ) ? esc_url( $s['btn_url']['url'] ) : '#';
+		$show_btn     = ! empty( $s['btn_show'] ) && $s['btn_show'] === 'yes';
+		$ghost_url    = isset( $s['btn_ghost_url']['url'] ) ? esc_url( $s['btn_ghost_url']['url'] ) : '#';
+		$show_ghost   = ! empty( $s['btn_ghost_show'] ) && $s['btn_ghost_show'] === 'yes';
+		$show_actions = $show_ghost || $show_btn;
 		?>
 		<header class="adymob-widget adymob-header">
 			<div class="adymob-header-inner">
@@ -98,11 +111,18 @@ class ADYMob_E2_Widget_Header extends \Elementor\Widget_Base {
 					<?php endforeach; ?>
 				</nav>
 				<?php endif; ?>
-				<?php if ( $show_btn && ! empty( $s['btn_text'] ) ) : ?>
+				<?php if ( $show_actions ) : ?>
 				<div class="adymob-header-actions">
+					<?php if ( $show_ghost && ! empty( $s['btn_ghost_text'] ) ) : ?>
+					<a href="<?php echo $ghost_url; ?>" class="adymob-header-btn-ghost">
+						<?php echo esc_html( $s['btn_ghost_text'] ); ?>
+					</a>
+					<?php endif; ?>
+					<?php if ( $show_btn && ! empty( $s['btn_text'] ) ) : ?>
 					<a href="<?php echo $btn_url; ?>" class="adymob-btn adymob-btn-primary adymob-header-btn">
 						<?php echo esc_html( $s['btn_text'] ); ?>
 					</a>
+					<?php endif; ?>
 				</div>
 				<?php endif; ?>
 			</div>

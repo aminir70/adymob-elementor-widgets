@@ -81,6 +81,23 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 		$s = $this->get_settings_for_display();
 		$logo_url = ! empty( $s['logo']['url'] ) ? esc_url( $s['logo']['url'] ) : '';
 
+		$cert1_src  = ! empty( $s['cert1_img']['url'] ) ? esc_url( $s['cert1_img']['url'] ) : '';
+		$cert1_href = isset( $s['cert1_url']['url'] ) ? esc_url( $s['cert1_url']['url'] ) : '#';
+		$cert2_src  = ! empty( $s['cert2_img']['url'] ) ? esc_url( $s['cert2_img']['url'] ) : '';
+		$cert2_href = isset( $s['cert2_url']['url'] ) ? esc_url( $s['cert2_url']['url'] ) : '#';
+
+		$certs_html = '';
+		if ( $cert1_src || $cert2_src ) {
+			$certs_html .= '<div class="adymob-footer-certs">';
+			if ( $cert1_src ) {
+				$certs_html .= '<a href="' . $cert1_href . '" target="_blank" rel="noopener" class="adymob-footer-cert"><img src="' . $cert1_src . '" alt="' . esc_attr( $s['cert1_alt'] ) . '"></a>';
+			}
+			if ( $cert2_src ) {
+				$certs_html .= '<a href="' . $cert2_href . '" target="_blank" rel="noopener" class="adymob-footer-cert"><img src="' . $cert2_src . '" alt="' . esc_attr( $s['cert2_alt'] ) . '"></a>';
+			}
+			$certs_html .= '</div>';
+		}
+
 		$cols_html = '';
 		for ( $c = 1; $c <= 4; $c++ ) {
 			$title = esc_html( $s[ 'col' . $c . '_title' ] ?? '' );
@@ -90,7 +107,8 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 				$href = isset( $link['url']['url'] ) ? esc_url( $link['url']['url'] ) : '#';
 				$items .= '<li><a href="' . $href . '">' . esc_html( $link['text'] ) . '</a></li>';
 			}
-			$cols_html .= '<div class="adymob-footer-col"><h5>' . $title . '</h5><ul>' . $items . '</ul></div>';
+			$after = ( $c === 3 ) ? $certs_html : '';
+			$cols_html .= '<div class="adymob-footer-col"><h5>' . $title . '</h5><ul>' . $items . '</ul>' . $after . '</div>';
 		}
 
 		$social_html = '';
@@ -100,11 +118,6 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 				$social_html .= '<a href="' . $href . '" aria-label="' . esc_attr( $soc['label'] ) . '">' . esc_html( $soc['label'] ) . '</a>';
 			}
 		}
-
-		$cert1_src = ! empty( $s['cert1_img']['url'] ) ? esc_url( $s['cert1_img']['url'] ) : '';
-		$cert1_href = isset( $s['cert1_url']['url'] ) ? esc_url( $s['cert1_url']['url'] ) : '#';
-		$cert2_src = ! empty( $s['cert2_img']['url'] ) ? esc_url( $s['cert2_img']['url'] ) : '';
-		$cert2_href = isset( $s['cert2_url']['url'] ) ? esc_url( $s['cert2_url']['url'] ) : '#';
 		?>
 		<footer class="adymob-widget">
 			<div class="adymob-footer-inner">
@@ -119,20 +132,6 @@ class ADYMob_E2_Widget_Footer_Section extends \Elementor\Widget_Base {
 				</div>
 				<div class="adymob-footer-bottom">
 					<span><?php echo esc_html( $s['copyright'] ); ?></span>
-					<?php if ( $cert1_src || $cert2_src ) : ?>
-					<div class="adymob-footer-certs">
-						<?php if ( $cert1_src ) : ?>
-						<a href="<?php echo $cert1_href; ?>" target="_blank" rel="noopener" class="adymob-footer-cert">
-							<img src="<?php echo $cert1_src; ?>" alt="<?php echo esc_attr( $s['cert1_alt'] ); ?>">
-						</a>
-						<?php endif; ?>
-						<?php if ( $cert2_src ) : ?>
-						<a href="<?php echo $cert2_href; ?>" target="_blank" rel="noopener" class="adymob-footer-cert">
-							<img src="<?php echo $cert2_src; ?>" alt="<?php echo esc_attr( $s['cert2_alt'] ); ?>">
-						</a>
-						<?php endif; ?>
-					</div>
-					<?php endif; ?>
 					<?php if ( $social_html ) : ?>
 					<div class="social"><?php echo $social_html; // phpcs:ignore ?></div>
 					<?php endif; ?>
